@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|e:\\unity\\project\\do_an_me_cung\\do_an_me_cung\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\assets\\scripts\\daynightclock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\daynightclock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\assets\\scripts\\sunsimulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6E4CFB-8FC8-9C5E-7FA3-ADEA1DA64EBE}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sunsimulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SunSimulation.cs",
+              "DocumentMoniker": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\SunSimulation.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SunSimulation.cs",
+              "ToolTip": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\SunSimulation.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SunSimulation.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAxwBMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-25T16:44:52.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DayNightClock.cs",
+              "DocumentMoniker": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\DayNightClock.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DayNightClock.cs",
+              "ToolTip": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\DayNightClock.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DayNightClock.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAowJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-25T16:42:10.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAI.cs",
+              "ToolTip": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyAI.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAowIwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T02:20:19.903Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
+              "ToolTip": "E:\\unity\\project\\Do_An_Me_Cung\\Do_An_Me_Cung\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAmwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T19:22:42.622Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
