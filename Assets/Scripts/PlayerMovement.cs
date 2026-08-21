@@ -2,53 +2,83 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Tốc độ di chuyển")]
+    [Header("1. Tốc độ di chuyển")]
     [SerializeField] private float walkSpeed = 5f;
     [SerializeField] private float runSpeed = 8f;
 
-    [Header("Lực nhảy")]
+    [Header("2. Lực nhảy & Trọng lực rơi")]
     [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float fallMultiplier = 2.5f; // Hệ số nhân giúp rơi nhanh hơn, không bị bồng bềnh
+
+    [Header("3. Cấu hình Camera & Chuột")]
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private float mouseSensitivity = 200f;
 
     private Rigidbody rb;
     private bool isGrounded;
+    private float xRotation = 0f; // Góc ngẩng/cúi mặt
 
     void Start()
     {
-        // Lấy thành phần Rigidbody được gắn trên Player
         rb = GetComponent<Rigidbody>();
-
-        // Đóng băng trục xoay vật lý để Player không bị ngã lăn lộn khi đụng tường
         rb.freezeRotation = true;
+
+        // Tự động tìm Main Camera trong con của Player nếu chưa gán ở Inspector
+        if (playerCamera == null && Camera.main != null)
+        {
+            playerCamera = Camera.main.transform;
+        }
+
+        // Khóa con trỏ chuột vào giữa màn hình và ẩn chuột đi khi chơi
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
-        // 1. Nhận đầu vào từ bàn phím (A, W, S, D hoặc các phím mũi tên)
-        float moveX = Input.GetAxisRaw("Horizontal"); // A/D hoặc Mũi tên Trái/Phải
-        float moveZ = Input.GetAxisRaw("Vertical");   // W/S hoặc Mũi tên Lên/Xuống
+        // --- A. XOAY CAMERA THEO CHUỘT ---
+        if (playerCamera != null)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // 2. Kiểm tra xem người chơi có đang giữ phím Shift hay không để chọn tốc độ
+            // Xoay Camera theo trục X (Ngẩng lên / Cúi xuống)
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Giới hạn không cho xoay quá đà lộn ngược đầu
+            playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+            // Xoay toàn bộ thân Player theo trục Y (Quay Trái / Quay Phải)
+            transform.Rotate(Vector3.up * mouseX);
+        }
+
+        // --- B. DI CHUYỂN THEO HƯỚNG MẮT NHÌN ---
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveZ = Input.GetAxisRaw("Vertical");
+
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-        // 3. Tính toán hướng di chuyển
-        Vector3 moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
+        // Tính hướng đi theo HƯỚNG QUAY HIỆN TẠI của Player (TransformDirection)
+        Vector3 moveDirection = (transform.right * moveX + transform.forward * moveZ).normalized;
 
-        // 4. Áp dụng vận tốc di chuyển vào Rigidbody (giữ nguyên vận tốc Y để không ảnh hưởng trọng lực)
         rb.velocity = new Vector3(moveDirection.x * currentSpeed, rb.velocity.y, moveDirection.z * currentSpeed);
 
-        // 5. Nhấn phím Space để nhảy (Chỉ nhảy được khi đang đứng trên sàn)
+        // --- C. XỬ LÝ NHẢY ---
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-            isGrounded = false; // Rời đất rồi thì không được nhảy tiếp cho đến khi chạm sàn
+            isGrounded = false;
+        }
+
+        // --- D. XỬ LÝ RƠI NHANH (TRIỆT TIÊU HIỆU ỨNG TRỌNG LỰC MẶT TRĂNG) ---
+        if (rb.velocity.y < 0)
+        {
+            // Tăng trọng lực kéo xuống khi nhân vật đang trên không và rơi xuống
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    // Kiểm tra va chạm với Sàn nhà (để biết khi nào được nhảy tiếp)
     private void OnCollisionEnter(Collision collision)
     {
-        // Nếu chạm vào bất kỳ vật thể nào (Ví dụ như Ground/Floor) thì cho phép nhảy tiếp
-        // Bạn có thể đặt Tag cho sàn là "Ground" nếu muốn kiểm tra chính xác hơn
         if (collision.gameObject.name.Contains("Ground") || collision.gameObject.name.Contains("Floor"))
         {
             isGrounded = true;

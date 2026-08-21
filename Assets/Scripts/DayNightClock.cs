@@ -6,7 +6,7 @@ using TMPro;
 [System.Serializable]
 public struct EnemySpawnArea
 {
-    public string areaName;         // Tên khu vực
+    public string areaName;           // Tên khu vực
     public Transform spawnPoint;    // Điểm quái xuất hiện
     public Transform[] waypoints;   // Danh sách Waypoint đi tuần riêng của khu vực này
 }
@@ -67,10 +67,19 @@ public class DayNightClock : MonoBehaviour
     {
         if (isNight)
         {
-            spawnTimer += Time.deltaTime;
-            if (spawnTimer >= spawnInterval)
+            // Kiểm tra xem còn khu vực nào trống không trước khi tiếp tục tích lũy thời gian spawn
+            if (HasAvailableSpawnArea())
             {
-                SpawnEnemy();
+                spawnTimer += Time.deltaTime;
+                if (spawnTimer >= spawnInterval)
+                {
+                    SpawnEnemy();
+                    spawnTimer = 0f;
+                }
+            }
+            else
+            {
+                // Nếu tất cả khu vực đã đầy, reset timer về 0 để dừng hoàn toàn việc cố gắng spawn liên tục
                 spawnTimer = 0f;
             }
         }
@@ -78,6 +87,20 @@ public class DayNightClock : MonoBehaviour
         {
             spawnTimer = 0f;
         }
+    }
+
+    bool HasAvailableSpawnArea()
+    {
+        if (spawnAreas == null || spawnAreas.Length == 0) return false;
+
+        for (int i = 0; i < spawnAreas.Length; i++)
+        {
+            if (!activeEnemiesPerArea.ContainsKey(i) || activeEnemiesPerArea[i] == null)
+            {
+                return true; // Vẫn còn ít nhất một khu vực trống
+            }
+        }
+        return false; // Tất cả khu vực đã có quái
     }
 
     void SpawnEnemy()
@@ -99,7 +122,6 @@ public class DayNightClock : MonoBehaviour
         // 2. Nếu tất cả các điểm Spawn đều đã có quái -> Không spawn nữa!
         if (availableAreaIndices.Count == 0)
         {
-            Debug.Log("Tất cả các điểm Spawn/Khu vực đều đã có quái! Bỏ qua lượt spawn này.");
             return;
         }
 
